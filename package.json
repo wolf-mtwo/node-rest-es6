@@ -1,0 +1,26 @@
+{
+  "name": "node-seed-es6",
+  "version": "1.0.0",
+  "description": "generic nodejs backend seed project",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wolf-mtwo/node-seed-ES6.git"
+  },
+  "keywords": [
+    "seed",
+    "nodejs",
+    "ECMAScript 6",
+    "ES2015",
+    "babel"
+  ],
+  "author": "wolf.mtwo@outlook.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wolf-mtwo/node-seed-ES6/issues"
+  },
+  "homepage": "https://github.com/wolf-mtwo/node-seed-ES6#readme"
+}
