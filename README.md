@@ -1,0 +1,2 @@
+#NODE SEED ES6
+
