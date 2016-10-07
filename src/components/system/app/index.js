@@ -2,20 +2,17 @@ import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 
-// var routes = require('./routes/index');
+
+// console.log(routes);
 // var users = require('./routes/users');
 
 var app = express();
 
-app.use(logger('system'));
+app.use(logger('dev'));
 app.use(bodyParser.json());
 
-// TODO implement it out side of system
-// app.use('/', routes);
-// app.use('/users', users);
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+
+require('../../../modules/home/index.route')(app);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
