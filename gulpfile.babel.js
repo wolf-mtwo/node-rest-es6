@@ -1,4 +1,4 @@
-const gulp = require('gulp');
+import gulp from 'gulp';
 const babel = require('gulp-babel');
 
 gulp.task('default', () =>

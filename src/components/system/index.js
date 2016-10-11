@@ -1,11 +1,13 @@
 import app from './app';
 import http from 'http';
-// console.log(App);
+import utils from './app/utils';
 
 export default class System {
 
   constructor() {
     this.name = 'node-seed-es6';
+    this.port = utils.normalizePort(process.env.PORT || '3000');
+    this.server = http.createServer(app);
   }
 
   getName() {
@@ -13,31 +15,16 @@ export default class System {
   }
 
   /**
-   * Get port from environment and store in Express.
+   * Start running server on port from environment and store in Express.
    */
-  init() {
-    // TODO Update port static value
-    // app.set('port', port);
-    return http.createServer(app);
-  }
-
-  getPort() {
-    return this.normalizePort(process.env.PORT || '3000');
-  }
-
-  normalizePort(val) {
-    var port = parseInt(val, 10);
-
-    if (isNaN(port)) {
-      // named pipe
-      return val;
-    }
-
-    if (port >= 0) {
-      // port number
-      return port;
-    }
-
-    return false;
+  start() {
+    return new Promise((response, reject) => {
+      if (this.server) {
+        this.server.listen(this.port);
+        response(true);
+      } else {
+        console.error('server instance is not created');
+      }
+    });
   }
 }

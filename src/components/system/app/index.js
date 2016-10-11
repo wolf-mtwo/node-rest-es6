@@ -1,18 +1,17 @@
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
-
-
-// console.log(routes);
-// var users = require('./routes/users');
+import glob from 'glob';
 
 var app = express();
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
 
-
-require('../../../modules/home/index.route')(app);
+let routes = glob.sync('src/modules/**/*.routes.js');
+routes.forEach((route) => {
+  console.log(route);
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
