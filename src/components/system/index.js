@@ -1,17 +1,35 @@
 import app from './app';
 import http from 'http';
+import glob from 'glob';
+import log4js from 'log4js';
 import utils from './app/utils';
+let logger = log4js.getLogger('system');
 
 export default class System {
 
   constructor() {
     this.name = 'node-seed-es6';
     this.port = utils.normalizePort(process.env.PORT || '3000');
-    this.server = http.createServer(app);
+
   }
 
   getName() {
     return this.name;
+  }
+
+  loadModules(dirname) {
+    let routes = glob.sync(dirname + '/modules/**/*.routes.js');
+    routes.forEach((route) => {
+      try {
+        logger.info(route);
+        require(route)(app);
+      } catch (e) {
+        console.log(e.stack);
+      }
+    });
+    return new Promise((response, reject) => {
+      response(true);
+    });
   }
 
   /**
@@ -19,12 +37,10 @@ export default class System {
    */
   start() {
     return new Promise((response, reject) => {
-      if (this.server) {
-        this.server.listen(this.port);
-        response(true);
-      } else {
-        console.error('server instance is not created');
-      }
+      require('./app/default')(app);
+      this.server = http.createServer(app);
+      this.server.listen(this.port);
+      response(true);
     });
   }
 }
