@@ -1,0 +1,17 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "max-len": [2, 80, 2, {"ignoreComments": true, "ignoreUrls": true}],
+    "space-before-function-paren": [2, { "anonymous": "never", "named": "never" }],
+    "semi": ["error", "always"],
+    "no-cond-assign": ["error", "always"],
+    "no-console": "off"
+  }
+}

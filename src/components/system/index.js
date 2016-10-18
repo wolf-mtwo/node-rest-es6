@@ -10,7 +10,6 @@ export default class System {
   constructor() {
     this.name = 'node-seed-es6';
     this.port = utils.normalizePort(process.env.PORT || '3000');
-
   }
 
   getName() {

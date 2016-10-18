@@ -1,8 +1,13 @@
+import fs from 'fs';
 import gulp from 'gulp';
-const babel = require('gulp-babel');
+import babel from 'gulp-babel';
 
-gulp.task('default', () =>
-    gulp.src('src/**/*.js')
-        .pipe(babel())
-        .pipe(gulp.dest('.tmp'))
-);
+/**
+ *  This will load all js or coffee files in the gulp directory
+ *  in order to load all gulp tasks
+ */
+fs.readdirSync('./gulp').filter((file) => {
+  return (/\.(js|coffee)$/i).test(file);
+}).map((file) => {
+  require('./gulp/' + file);
+});
