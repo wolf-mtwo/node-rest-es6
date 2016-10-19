@@ -10,7 +10,7 @@ gulp.task('clean', () => {
   .pipe(clean());
 });
 
-gulp.task('build', () => {
+gulp.task('serve:dist', () => {
   return gulp.src(['./src/**/*.js', '!./src/**/*.spec.js'])
       .pipe(eslint())
       .pipe(eslint.format())
