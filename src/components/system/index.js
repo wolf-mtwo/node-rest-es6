@@ -21,7 +21,12 @@ export default class System {
     routes.forEach((route) => {
       try {
         logger.info(route);
-        require(route)(app);
+        let moduleRoute = require(route);
+        if (moduleRoute instanceof Function) {
+          moduleRoute(app);
+        } else {
+          logger.error(route, 'is not a module');
+        }
       } catch (e) {
         console.log(e.stack);
       }
