@@ -3,6 +3,7 @@ import babel from 'gulp-babel';
 import clean from 'gulp-clean';
 import print from 'gulp-print';
 import eslint from 'gulp-eslint';
+import nodemon from 'gulp-nodemon';
 import changed from 'gulp-changed';
 
 gulp.task('clean', () => {
@@ -34,6 +35,12 @@ gulp.task('watch', () => {
       .pipe(gulp.dest('.tmp'));
 });
 
-gulp.task('serve', () => {
+gulp.task('serve', ['serve:dist'], () => {
   gulp.watch('./src/**/*.js', ['watch']);
+  nodemon({
+    script: './.tmp/server.js',
+    watch: ['.tmp'],
+    ext: 'js html',
+    env: { 'NODE_ENV': 'development' }
+  });
 });
