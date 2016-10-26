@@ -17,5 +17,5 @@ module.exports = (app) => {
 
   let routerAuth = express.Router();
   routerAuth.post('/logout', session.auth, session.logout);
-  app.use('/api/v1', routerAuth);
+  app.use('/api/v2', routerAuth);
 };

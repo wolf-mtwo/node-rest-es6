@@ -14,7 +14,8 @@ module.exports = (app) => {
   if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
       res.status(err.status || 500);
-      res.render('error', {
+      console.log(err.stack);
+      res.json({
         message: err.message,
         error: err
       });
@@ -25,7 +26,7 @@ module.exports = (app) => {
   // no stacktraces leaked to user
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.json({
       message: err.message,
       error: {}
     });

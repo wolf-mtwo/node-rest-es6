@@ -1,5 +1,32 @@
 #NODE SEED ES6
 
+## Features
+
+- Session
+- User ahutentication
+- User CRUD
+  - Encrypt password
+- Database connection
+- Node seed
+
+## Rest API
+
+Base URL **"http://localhost:8080/api/v1"**
+
+```
+# User
+GET /api/v1/users
+POST /api/v1/users
+GET /api/v1/users/:user_id
+PUT /api/v1/users/:user_id
+DELETE /api/v1/users/:user_id
+
+# Session
+Header x-access-token: ||token||
+POST /api/v1/login
+POST /api/v1/logout
+```
+
 ## Running your application with Gulp
 
 We have wrapped Gulp tasks regardless of the build tool running the project is transparent to you.
@@ -12,6 +39,8 @@ It's time to use Gulp tasks:
 
 ## Contributing
 We welcome pull requests from the community! Just be sure to read the [contributing]() doc to get started.
+
+
 
 ## License
 [The MIT License](LICENSE.md)
