@@ -19,6 +19,13 @@ gulp.task('serve:dist', () => {
       .pipe(gulp.dest('.tmp'));
 });
 
+gulp.task('copy:assets', () => {
+  return gulp.src(['./src/**/*.*', '!./src/**/*.js'])
+      .pipe(changed('.tmp'))
+      .pipe(print())
+      .pipe(gulp.dest('.tmp'));
+});
+
 gulp.task('watch', () => {
   return gulp.src('./src/**/*.js')
       .pipe(changed('.tmp'))
@@ -35,8 +42,15 @@ gulp.task('watch', () => {
       .pipe(gulp.dest('.tmp'));
 });
 
-gulp.task('serve', ['serve:dist'], () => {
-  gulp.watch('./src/**/*.js', ['watch']);
+gulp.task('watch:public', () => {
+  return gulp.src(['./src/**/*.*', '!./src/**/*.js'])
+      .pipe(changed('.tmp'))
+      .pipe(print())
+      .pipe(gulp.dest('.tmp'));
+});
+
+gulp.task('serve', ['serve:dist', 'copy:assets'], () => {
+  gulp.watch('./src/**/*.js', ['watch', 'watch:public']);
   nodemon({
     script: './.tmp/server.js',
     watch: ['.tmp'],
