@@ -22,8 +22,9 @@ PUT /api/v1/users/:user_id
 DELETE /api/v1/users/:user_id
 
 # Session
-Header x-access-token: ||token||
 POST /api/v1/login
+
+Header x-access-token: ||token||
 POST /api/v1/logout
 ```
 
