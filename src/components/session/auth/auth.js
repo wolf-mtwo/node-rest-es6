@@ -1,5 +1,5 @@
 var jwt = require('jsonwebtoken');
-var config = require('../../../../config');
+var config = require('../../../config');
 
 // route middleware to verify a token
 module.exports = (req, res, next) => {

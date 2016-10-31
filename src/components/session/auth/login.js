@@ -1,6 +1,6 @@
 var jwt = require('jsonwebtoken');
-var utils = require('../../utils/utils');
-var config = require('../../../../config');
+var utils = require('../utils/utils');
+var config = require('../../../config');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 

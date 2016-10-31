@@ -1,6 +1,6 @@
 import express from 'express';
 var controller = require('./controllers/user');
-var session = require('./session');
+var session = require('../../components/session');
 
 module.exports = (app) => {
   let router = express.Router();
