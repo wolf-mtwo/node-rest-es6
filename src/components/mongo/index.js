@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import config from './config';
 import glob from 'glob';
 import log4js from 'log4js';
+
 let logger = log4js.getLogger('database');
 
 export default class MongoDB {
@@ -19,7 +20,7 @@ export default class MongoDB {
     let models = glob.sync(dirname + '/modules/**/*.model.js');
     models.forEach((model) => {
       try {
-        logger.info(model);
+        logger.debug(model);
         require(model);
       } catch (e) {
         console.log(e.stack);
