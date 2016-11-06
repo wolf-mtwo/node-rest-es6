@@ -1,3 +1,4 @@
 {
-  "secret": "a-message-secret"
+  "secret": "a-message-secret",
+  "port": "3000"
 }
