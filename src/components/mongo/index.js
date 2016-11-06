@@ -4,6 +4,8 @@ import glob from 'glob';
 import log4js from 'log4js';
 let logger = log4js.getLogger('database');
 
+mongoose.Promise = global.Promise;
+
 export default class MongoDB {
 
   static start() {
