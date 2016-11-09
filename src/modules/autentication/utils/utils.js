@@ -1,4 +1,4 @@
-var crypto = require('crypto');
+import crypto from 'crypto';
 
 exports.update_password = function(user_data) {
   if (!user_data.password) {
@@ -6,6 +6,6 @@ exports.update_password = function(user_data) {
   }
 
   user_data.password = crypto.createHash('md5')
-    .update(user_data.password).digest("hex");
+  .update(user_data.password).digest("hex");
   return user_data;
 };

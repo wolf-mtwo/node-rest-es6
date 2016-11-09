@@ -1,11 +1,12 @@
-var model = require('../../../components/mongo/model/model')('Article');
+import model from '../../../components/mongo/model/model';
+let controller = model('Article');
 
-exports.model = model.model;
-exports.create = model.create;
-exports.update = model.update;
-exports.remove = model.remove;
-exports.show = model.show;
-exports.all = model.all;
-exports.pagination = model.pagination;
-exports.page = model.page;
-exports.limit = model.limit;
+exports.model = controller.model;
+exports.create = controller.create;
+exports.update = controller.update;
+exports.remove = controller.remove;
+exports.show = controller.show;
+exports.all = controller.all;
+exports.pagination = controller.pagination;
+exports.page = controller.page;
+exports.limit = controller.limit;
