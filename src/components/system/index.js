@@ -3,24 +3,21 @@ import http from 'http';
 import glob from 'glob';
 import log4js from 'log4js';
 import utils from './app/utils';
+import config from '../../config';
+
 let logger = log4js.getLogger('system');
 
 export default class System {
 
   constructor() {
-    this.name = 'node-seed-es6';
-    this.port = utils.normalizePort(process.env.PORT || '3000');
-  }
-
-  getName() {
-    return this.name;
+    this.port = utils.normalizePort(process.env.PORT || config.port);
   }
 
   loadModules(dirname) {
     let routes = glob.sync(dirname + '/modules/**/*.routes.js');
     routes.forEach((route) => {
       try {
-        logger.info(route);
+        logger.debug(route);
         let moduleRoute = require(route);
         if (moduleRoute instanceof Function) {
           moduleRoute(app);

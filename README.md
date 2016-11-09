@@ -39,7 +39,6 @@ DELETE /api/v1/users/:article_id
 ## Running your application with Gulp
 
 We have wrapped Gulp tasks regardless of the build tool running the project is transparent to you.
-
 To use Gulp directly, you need to first install it globally:
 
 It's time to use Gulp tasks:
@@ -48,8 +47,6 @@ It's time to use Gulp tasks:
 
 ## Contributing
 We welcome pull requests from the community! Just be sure to read the [contributing]() doc to get started.
-
-
 
 ## License
 [The MIT License](LICENSE.md)
