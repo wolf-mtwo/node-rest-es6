@@ -1,8 +1,8 @@
-var crypto = require('crypto');
-var utils = require('../utils/utils');
+import _ from 'lodash';
+import crypto from 'crypto';
+import utils from '../utils/utils';
 var model = require('../../../components/mongo/model/model')('User');
 var common = require('../../../components/mongo/model/common')('User');
-var _ = require('lodash');
 
 exports.model = model.model;
 exports.update = function(req, res, next) {

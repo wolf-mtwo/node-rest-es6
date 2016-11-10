@@ -27,35 +27,35 @@ module.exports = function(name) {
 
   var create = function(req, res, next) {
     common.create(req.body)
-      .then(function(response) {
-        res.json(response);
-      })
-      .catch(function(err) {
-        next(err);
-      });
+    .then(function(response) {
+      res.json(response);
+    })
+    .catch(function(err) {
+      next(err);
+    });
   };
 
   var update = function(req, res, next) {
     var item = req[model_name];
     item = _.extend(item, req.body);
     common.update(item)
-      .then(function(response) {
-        res.json(response);
-      })
-      .catch(function(err) {
-        next(err);
-      });
+    .then(function(response) {
+      res.json(response);
+    })
+    .catch(function(err) {
+      next(err);
+    });
   };
 
   var remove = function(req, res, next) {
     var item = req[model_name];
     common.remove(item)
-      .then(function(response) {
-        res.json(response);
-      })
-      .catch(function(err) {
-        next(err);
-      });
+    .then(function(response) {
+      res.json(response);
+    })
+    .catch(function(err) {
+      next(err);
+    });
   };
 
   var show = function(req, res) {
@@ -65,23 +65,23 @@ module.exports = function(name) {
   var all = function(req, res, next) {
     var query = req.query || {};
     common.all(query)
-      .then(function(response) {
-        res.json(response);
-      })
-      .catch(function(err) {
-        next(err);
-      });
+    .then(function(response) {
+      res.json(response);
+    })
+    .catch(function(err) {
+      next(err);
+    });
   };
 
   var query = function(req, res, next) {
     var query = req.query || {};
     common.all(query)
-      .then(function(response) {
-        res.json(response);
-      })
-      .catch(function(err) {
-        next(err);
-      });
+    .then(function(response) {
+      res.json(response);
+    })
+    .catch(function(err) {
+      next(err);
+    });
   };
 
   var pagination = function(req, res, next) {
@@ -106,12 +106,12 @@ module.exports = function(name) {
   var pagination_short = function(req, res, next) {
     var query = req.query || {};
     common.query_short(query, req.page, req.limit, '-created')
-      .then(function(response) {
-        res.json(response);
-      })
-      .catch(function(err) {
-        next(err);
-      });
+    .then(function(response) {
+      res.json(response);
+    })
+    .catch(function(err) {
+      next(err);
+    });
   };
 
   return {
