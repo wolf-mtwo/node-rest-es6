@@ -31,6 +31,7 @@ exports.update = function(req, res, next) {
     next(err);
   });
 };
+
 exports.remove = model.remove;
 exports.show = model.show;
 exports.all = model.all;
