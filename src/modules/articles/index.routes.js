@@ -1,6 +1,8 @@
 import express from 'express';
+import Service from './controllers/service';
+
 // import controller from './controllers/articles';
-import ArticlesService from './controllers/article-helper';
+// import ArticlesService from './controllers/article-helper';
 // import session from '../../components/session';
 
 module.exports = (app) => {
@@ -17,7 +19,7 @@ module.exports = (app) => {
   // router.param('limit', controller.limit);
   // router.get('/articles', controller.all);
   // router.get('/articles/page/:page/limit/:limit', controller.pagination);
-  router.post('/articles', ArticlesService.create);
+  router.post('/articles', Service.create);
   // router.route('/articles/:article_id')
   //   .get(controller.show)
   //   .put(controller.update)
@@ -25,6 +27,5 @@ module.exports = (app) => {
   // router.param('article_id', controller.model);
   // router.param('page', controller.page);
   // router.param('limit', controller.limit);
-
   app.use('/v1', router);
 };
