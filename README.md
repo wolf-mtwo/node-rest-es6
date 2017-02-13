@@ -21,12 +21,6 @@ GET /api/v1/users/:user_id
 PUT /api/v1/users/:user_id
 DELETE /api/v1/users/:user_id
 
-# Session
-POST /api/v1/login
-
-Header x-access-token: ||token||
-POST /api/v1/logout
-
 # Articles CRUD demo example
 GET /api/v1/articles
 POST /api/v1/articles
@@ -34,6 +28,12 @@ GET /api/v1/articles/page/:page/limit/:limit
 GET /api/v1/articles/:article_id
 PUT /api/v1/articles/:article_id
 DELETE /api/v1/users/:article_id
+
+# Session
+POST /api/v1/login
+
+Header x-access-token: ||token||
+POST /api/v1/logout
 ```
 
 ## Running your application with Gulp
