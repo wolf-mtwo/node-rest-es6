@@ -15,7 +15,10 @@ module.exports = (app) => {
     app.use(function(err, req, res, next) {
       res.status(err.status || 500);
       console.log(err.stack);
-      res.json(err);
+      res.json({
+        message: err.message,
+        error: err
+      });
     });
   }
 
@@ -23,6 +26,8 @@ module.exports = (app) => {
   // no stacktraces leaked to user
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.json(err);
+    res.json({
+      message: err.message
+    });
   });
 };

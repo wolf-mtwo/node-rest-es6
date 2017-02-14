@@ -8,9 +8,9 @@ export default class MongoDB {
     if (!model_name) {
       throw new Error('model_name is empty');
     }
+    this.model_name = model_name;
     this.logger = log4js.getLogger('model');
     this.Model = mongoose.model(model_name);
-    this.per_page = 10;
   }
 
   get_by_id(id) {
@@ -34,8 +34,11 @@ export default class MongoDB {
     var item = new this.Model(data);
     return new Promise((resolve, reject) => {
       item.save((err) => {
-        if (err) return reject(err);
-        resolve(item);
+        if (err) {
+          reject(err);
+        } else {
+          resolve(item);
+        }
       });
     });
   }
@@ -66,7 +69,8 @@ export default class MongoDB {
 
   find_one(query) {
     return new Promise((resolve, reject) => {
-      this.Model.findOne(query).exec((err, item) => {
+      this.Model.findOne(query)
+      .exec((err, item) => {
         if (err) {
           reject(err);
         } else {
@@ -76,9 +80,10 @@ export default class MongoDB {
     });
   }
 
-  all(query) {
+  query(query) {
     return new Promise((resolve, reject) => {
-      this.Model.find(query).sort('-created').exec((err, items) => {
+      this.Model.find(query).sort('-created')
+      .exec((err, items) => {
         if (err) {
           reject(err);
         } else {
@@ -88,17 +93,19 @@ export default class MongoDB {
     });
   }
 
-  query(query, page, limit) {
-    if (page == 0) {
-      throw new Error('cannot be 0 on pagination');
+  pagination(query, page, limit) {
+    if (page <= 0) {
+      throw new Error('cannot be the page under 0');
     }
-    per_page = limit || per_page;
+    if (limit <= 0) {
+      throw new Error('cannot be the limit under 0');
+    }
     return new Promise((resolve, reject) => {
-      this.Model.find(query).
-      limit(per_page).
-      skip(per_page * --page).
-      sort('-created').
-      exec((err, items) => {
+      this.Model.find(query)
+      .limit(limit)
+      .skip(limit * --page)
+      .sort('-created')
+      .exec((err, items) => {
         if (err) {
           reject(err);
         } else {
@@ -108,17 +115,19 @@ export default class MongoDB {
     });
   }
 
-  query_short(query, page, limit, short_by) {
-    if (page == 0) {
-      throw new Error('cannot be 0 on pagination');
+  pagination_short(query, page, limit, short_by) {
+    if (page <= 0) {
+      throw new Error('cannot be the page under 0');
     }
-    per_page = limit || per_page;
+    if (limit <= 0) {
+      throw new Error('cannot be the limit under 0');
+    }
     return new Promise((resolve, reject) => {
-      this.Model.find(query).
-      limit(per_page).
-      skip(per_page * --page).
-      sort(short_by).
-      exec((err, items) => {
+      this.Model.find(query)
+      .limit(limit)
+      .skip(limit * --page)
+      .sort(short_by)
+      .exec((err, items) => {
         if (err) {
           reject(err);
         } else {

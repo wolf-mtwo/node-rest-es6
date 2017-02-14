@@ -1,31 +1,29 @@
 import express from 'express';
-import Service from './controllers/service';
-
-// import controller from './controllers/articles';
-// import ArticlesService from './controllers/article-helper';
-// import session from '../../components/session';
+import Service from './service/service';
 
 module.exports = (app) => {
   let router = express.Router();
-  // router.get('/articles', session.auth, controller.all);
-  // router.get('/articles/page/:page/limit/:limit', session.auth, controller.pagination);
-  // router.post('/articles', session.auth, controller.create);
+  // TODO it works with auth
+  // router.get('/articles', session.auth, Service.all);
+  // router.get('/articles/page/:page/limit/:limit', session.auth, Service.pagination);
+  // router.post('/articles', session.auth, Service.create);
   // router.route('/articles/:article_id')
-  //   .get(session.auth, controller.show)
-  //   .put(session.auth, controller.update)
-  //   .delete(session.auth, controller.remove);
-  // router.param('article_id', controller.model);
-  // router.param('page', controller.page);
-  // router.param('limit', controller.limit);
-  // router.get('/articles', controller.all);
-  // router.get('/articles/page/:page/limit/:limit', controller.pagination);
+  //   .get(session.auth, Service.show)
+  //   .put(session.auth, Service.update)
+  //   .delete(session.auth, Service.remove);
+  // router.param('article_id', Service.model);
+  // router.param('page', Service.page);
+  // router.param('limit', Service.limit);
+
+  router.get('/articles', Service.query);
+  router.get('/articles/page/:page/limit/:limit', Service.pagination);
   router.post('/articles', Service.create);
-  // router.route('/articles/:article_id')
-  //   .get(controller.show)
-  //   .put(controller.update)
-  //   .delete(controller.remove);
-  // router.param('article_id', controller.model);
-  // router.param('page', controller.page);
-  // router.param('limit', controller.limit);
+  router.route('/articles/:article_id')
+  .get(Service.show)
+  .put(Service.update)
+  .delete(Service.remove);
+  router.param('page', Service.page);
+  router.param('limit', Service.limit);
+  router.param('article_id', Service.load);
   app.use('/v1', router);
 };
