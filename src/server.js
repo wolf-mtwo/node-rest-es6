@@ -1,8 +1,8 @@
+import log4js from 'log4js';
 import System from './components/system';
 import MongoDB from './components/mongo';
-import log4js from 'log4js';
-let logger = log4js.getLogger('app');
 
+let logger = log4js.getLogger('app');
 let system = new System();
 
 MongoDB.start()
