@@ -1,5 +1,5 @@
 {
-  "name": "node-seed-es6",
+  "name": "node-rest-es6",
   "version": "1.0.0",
   "description": "generic nodejs backend seed project",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wolf-mtwo/node-seed-ES6.git"
+    "url": "git+https://github.com/wolf-mtwo/node-rest-es6.git"
   },
   "keywords": [
     "seed",
@@ -21,9 +21,9 @@
   "author": "wolf.mtwo@outlook.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/wolf-mtwo/node-seed-ES6/issues"
+    "url": "https://github.com/wolf-mtwo/node-rest-es6/issues"
   },
-  "homepage": "https://github.com/wolf-mtwo/node-seed-ES6#readme",
+  "homepage": "https://github.com/wolf-mtwo/node-rest-es6#readme",
   "devDependencies": {
     "babel-preset-latest": "^6.16.0",
     "eslint": "^3.7.1",
