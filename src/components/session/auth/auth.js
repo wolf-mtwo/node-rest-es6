@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
       if (err) {
         return res.json({
           success: false,
-          message: 'Failed to authenticate token.'});
+          message: 'Failed to authenticate token'});
       } else {
         req.decoded = decoded;
         next();
@@ -18,7 +18,7 @@ module.exports = (req, res, next) => {
     });
   } else {
     return res.status(403).send({
-        message: 'No x-access-token provided.'
+        message: 'No x-access-token provided'
     });
   }
 };
