@@ -1,12 +1,8 @@
 import express from 'express';
+import { Service } from './service';
 
-/* GET home page. */
 module.exports = (app) => {
   let router = express.Router();
-  router.get('/', function(req, res, next) {
-    res.json({
-      vesion: '0.0.0'
-    });
-  });
+  router.get('/', Service.home);
   app.use('/', router);
 };

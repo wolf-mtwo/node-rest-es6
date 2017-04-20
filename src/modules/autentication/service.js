@@ -6,7 +6,7 @@ import Middleware from '../../components/adapter/middleware.service';
 let model = new User();
 let middleware = new Middleware(model);
 
-export default class Service {
+export class Service {
 
   static query(req, res, next) {
     middleware.query(req, res, next);
