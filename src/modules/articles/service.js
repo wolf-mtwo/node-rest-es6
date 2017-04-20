@@ -1,4 +1,4 @@
-import Article from './article';
+import Article from './services/article';
 import Middleware from '../../../components/adapter/middleware.service';
 
 let model = new Article();

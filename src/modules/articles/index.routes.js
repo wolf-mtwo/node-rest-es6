@@ -1,5 +1,5 @@
 import express from 'express';
-import Service from './service/service';
+import Service from './service';
 
 module.exports = (app) => {
   let router = express.Router();
