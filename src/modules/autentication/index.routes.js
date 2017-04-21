@@ -1,6 +1,6 @@
 import express from 'express';
 import { Service } from './service';
-import session from '../../components/session';
+import { SessionService } from '../../components/session/session.service';
 
 module.exports = (app) => {
   let router = express.Router();
@@ -14,7 +14,7 @@ module.exports = (app) => {
   app.use('/v1', router);
 
   let routerAuth = express.Router();
-  routerAuth.post('/login', session.login);
-  routerAuth.post('/logout', session.auth, session.logout);
+  routerAuth.post('/login', SessionService.login);
+  routerAuth.post('/logout', SessionService.auth, SessionService.logout);
   app.use('/v1', routerAuth);
 };

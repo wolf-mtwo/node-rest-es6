@@ -2,7 +2,7 @@ import crypto from 'crypto';
 
 export class PasswordUtils {
 
-  static changePassword(user) {
+  static change_password(user) {
     if (!user.password) {
       throw new Error('password is undefined');
     }
