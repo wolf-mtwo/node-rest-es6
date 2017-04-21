@@ -1,4 +1,4 @@
-#NODE SEED ES6
+# NODE SEED ES6
 
 ## Features
 
@@ -11,29 +11,54 @@
 
 ## Rest API
 
-Base URL **"http://localhost:3000/api/v1"**
+Base URL **"http://localhost:3000/v1"**
 
 ```
 # User
-GET /api/v1/users
-POST /api/v1/users
-GET /api/v1/users/:user_id
-PUT /api/v1/users/:user_id
-DELETE /api/v1/users/:user_id
+GET /v1/users _-> queriable_
+POST /v1/users
+GET /v1/users/:user_id
+PUT /v1/users/:user_id
+DELETE /v1/users/:user_id
 
 # Articles CRUD demo example
-GET /api/v1/articles
-POST /api/v1/articles
-GET /api/v1/articles/page/:page/limit/:limit
-GET /api/v1/articles/:article_id
-PUT /api/v1/articles/:article_id
-DELETE /api/v1/users/:article_id
+GET /v1/articles _-> queriable_
+POST /v1/articles
+GET /v1/articles/page/:page/limit/:limit _-> queriable_
+GET /v1/articles/:article_id
+PUT /v1/articles/:article_id
+DELETE /v1/users/:article_id
 
 # Session
-POST /api/v1/login
+POST /v1/login
 
 Header x-access-token: ||token||
-POST /api/v1/logout
+POST /v1/logout
+```
+
+## Queriable
+
+_Queriable_ verboses are always to retrieve a bulk of data.
+
+```
+GET /v1/post
+GET /v1/post/page/:page/limit/:limit
+```
+
+and here comes the advantage, basic implementation allow to you use _schema_
+properties as queriable paramenters. It mean we can do kind of queries.
+
+| id | title | user_id | article_id |
+|----|-------|---------|---------|
+| 1 | say hi! | u1 | a1 |
+| 2 | hello world! | u1 | a2 |
+
+Using given data, query response should look like.
+
+```
+GET /v1/post?user_id=u1 _-> [{ // 1 }, { // 2 }]_
+GET /v1/post?user_id=u1&article_id=a2 _-> [{ // 2 }]_
+GET /v1/post/page/:page/limit/:limit?article_id=a2 _-> [{ // 2 }]_
 ```
 
 ## Running your application with Gulp
