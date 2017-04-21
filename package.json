@@ -33,7 +33,8 @@
     "gulp-copy": "0.0.2",
     "gulp-eslint": "^3.0.1",
     "gulp-nodemon": "^2.2.1",
-    "gulp-print": "^2.0.1"
+    "gulp-print": "^2.0.1",
+    "gulp-sequence": "^0.4.6"
   },
   "dependencies": {
     "body-parser": "^1.15.2",

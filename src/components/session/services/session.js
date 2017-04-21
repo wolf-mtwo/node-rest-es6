@@ -1,4 +1,4 @@
-import { Session } from './session';
+import { Session } from '../session';
 
 let session = new Session();
 

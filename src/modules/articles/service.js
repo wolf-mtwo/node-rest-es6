@@ -1,10 +1,10 @@
-import Article from './services/article';
+import { Article } from './models/article';
 import Middleware from '../../components/adapter/middleware.service';
 
 let model = new Article();
 let middleware = new Middleware(model);
 
-export default class Service {
+export class Service {
 
   static query(req, res, next) {
     middleware.query(req, res, next);

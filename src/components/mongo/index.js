@@ -19,7 +19,7 @@ export default class MongoDB {
   }
 
   static loadModels(dirname) {
-    let models = glob.sync(dirname + '/**/*.model.js');
+    let models = glob.sync(dirname + '/**/*.schema.js');
     models.forEach((model) => {
       try {
         logger.debug(model);

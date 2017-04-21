@@ -5,6 +5,7 @@ import print from 'gulp-print';
 import eslint from 'gulp-eslint';
 import nodemon from 'gulp-nodemon';
 import changed from 'gulp-changed';
+import gulpSequence from 'gulp-sequence';
 
 gulp.task('clean', () => {
   return gulp.src(['dist', '.tmp'], {read: false})
@@ -49,12 +50,14 @@ gulp.task('watch:public', () => {
       .pipe(gulp.dest('.tmp'));
 });
 
-gulp.task('serve', ['serve:dist', 'copy:assets'], () => {
-  gulp.watch('./src/**/*.js', ['watch', 'watch:public']);
-  nodemon({
-    script: './.tmp/server.js',
-    watch: ['.tmp'],
-    ext: 'js html',
-    env: { 'NODE_ENV': 'development' }
+gulp.task('serve', ['clean'], () => {
+  gulpSequence(['serve:dist', 'copy:assets'], () => {
+    gulp.watch('./src/**/*.js', ['watch', 'watch:public']);
+    nodemon({
+      script: './.tmp/server.js',
+      watch: ['.tmp'],
+      ext: 'js html',
+      env: { 'NODE_ENV': 'development' }
+    });
   });
 });

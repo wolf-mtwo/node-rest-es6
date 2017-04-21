@@ -1,18 +1,18 @@
 import express from 'express';
-import Service from './service';
+import { Service } from './service';
+import { SessionService } from '../../components/session/services/session';
 
 module.exports = (app) => {
   let router = express.Router();
-  // TODO it works with auth
-  // router.get('/articles', session.auth, Service.all);
-
-  router.get('/articles', Service.query);
-  router.get('/articles/page/:page/limit/:limit', Service.pagination);
-  router.post('/articles', Service.create);
+  router.get('/articles', SessionService.auth, Service.query);
+  router.get(
+    '/articles/page/:page/limit/:limit', SessionService.auth, Service.pagination
+  );
+  router.post('/articles',SessionService.auth,  Service.create);
   router.route('/articles/:article_id')
-  .get(Service.show)
-  .put(Service.update)
-  .delete(Service.remove);
+  .get(SessionService.auth, Service.show)
+  .put(SessionService.auth, Service.update)
+  .delete(SessionService.auth, Service.remove);
   router.param('page', Service.page);
   router.param('limit', Service.limit);
   router.param('article_id', Service.load);

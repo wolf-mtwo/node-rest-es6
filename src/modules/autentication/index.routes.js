@@ -1,6 +1,6 @@
 import express from 'express';
 import { Service } from './service';
-import { SessionService } from '../../components/session/session.service';
+import { SessionService } from '../../components/session/services/session';
 
 module.exports = (app) => {
   let router = express.Router();

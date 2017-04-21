@@ -2,37 +2,30 @@ import jwt from 'jsonwebtoken';
 import config from '../../config';
 import { User } from './models/user';
 import { PasswordUtils } from './utils/password';
-// var jwt = require('jsonwebtoken');
-// var utils = require('../utils/utils');
-// var config = require('../../../config');
-// var mongoose = require('mongoose');
-// var User = mongoose.model('User');
 
 export class Session {
 
   constructor() {
-      // console.log(User);
     this.user = new User();
   }
 
   auth(req, res, next) {
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
-    if (token) {
-      jwt.verify(token, config.secret, function(err, decoded) {
-        if (err) {
-          return res.json({
-            success: false,
-            message: 'Failed to authenticate token'});
-        } else {
-          req.decoded = decoded;
-          next();
-        }
-      });
-    } else {
-      return res.status(403).send({
-          message: 'No x-access-token provided'
-      });
+    if (!token) {
+      let err = new Error('no x-access-token provided');
+      err.status = 403;
+      return next(err);
     }
+    jwt.verify(token, config.secret, function(err, decoded) {
+      if (err) {
+        let err = new Error('failed to authenticate token');
+        err.status = 403;
+        next(err);
+      } else {
+        req.decoded = decoded;
+        next();
+      }
+    });
   }
 
   login(req, res, next) {
@@ -76,6 +69,6 @@ export class Session {
   }
 
   logout(req, res, next) {
-    res.json({});
+    res.status(204).send();
   }
 }
