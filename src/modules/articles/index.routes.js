@@ -1,5 +1,5 @@
 import express from 'express';
-import { Service } from './service';
+import { Service } from './services/service';
 import { SessionService } from '../../components/session/services/session';
 
 module.exports = (app) => {

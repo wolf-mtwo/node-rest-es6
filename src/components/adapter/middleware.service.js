@@ -10,8 +10,8 @@ export default class MiddlewareService {
   query(req, res, next) {
     let query = req.query || {};
     this.model.query(query)
-    .then((response) => {
-      res.json(response);
+    .then((items) => {
+      res.json(items);
     })
     .catch((err) => {
       next(err);
@@ -21,8 +21,8 @@ export default class MiddlewareService {
   pagination(req, res, next) {
     let query = req.query || {};
     this.model.pagination(query, req.page, req.limit)
-    .then((response) => {
-      res.json(response);
+    .then((items) => {
+      res.json(items);
     }).catch((err) => {
       next(err);
     });
@@ -31,8 +31,8 @@ export default class MiddlewareService {
   pagination_short(req, res, next) {
     let query = req.query || {};
     this.model.pagination_short(query, req.page, req.limit, '-created')
-    .then((response) => {
-      res.json(response);
+    .then((items) => {
+      res.json(items);
     })
     .catch((err) => {
       next(err);
@@ -41,8 +41,8 @@ export default class MiddlewareService {
 
   create(req, res, next) {
     this.model.create(req.body)
-    .then((response) => {
-      res.json(response);
+    .then((item) => {
+      res.json(item);
     })
     .catch((err) => {
       next(err);
@@ -57,8 +57,8 @@ export default class MiddlewareService {
     let item = req[this.model_name];
     item = _.extend(item, req.body);
     this.model.update(item)
-    .then((response) => {
-      res.json(response);
+    .then((item) => {
+      res.json(item);
     })
     .catch((err) => {
       next(err);
@@ -66,10 +66,10 @@ export default class MiddlewareService {
   }
 
   remove(req, res, next) {
-    let item = req[this.model_name];
-    this.model.remove(item)
-    .then((response) => {
-      res.json(response);
+    let data = req[this.model_name];
+    this.model.remove(data)
+    .then((item) => {
+      res.json(item);
     })
     .catch((err) => {
       next(err);
@@ -82,8 +82,8 @@ export default class MiddlewareService {
     }
     req.body[this.model_name] = id;
     this.model.get_by_id(id)
-    .then((response) => {
-      req[this.model_name] = response;
+    .then((item) => {
+      req[this.model_name] = item;
       next();
     })
     .catch((err) => {

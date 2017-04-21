@@ -1,5 +1,5 @@
-import { Article } from './models/article';
-import Middleware from '../../components/adapter/middleware.service';
+import { Article } from '../models/article';
+import Middleware from '../../../components/adapter/middleware.service';
 
 let model = new Article();
 let middleware = new Middleware(model);
