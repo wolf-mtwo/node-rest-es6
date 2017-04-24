@@ -1,6 +1,6 @@
-import Master from '../../../components/adapter/master';
+import { Master } from '../../../components/adapter/master';
 
-export default class User extends Master {
+export class User extends Master {
 
   constructor() {
     super('User');

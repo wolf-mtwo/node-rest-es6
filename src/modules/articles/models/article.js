@@ -1,4 +1,4 @@
-import Master from '../../../components/adapter/master';
+import { Master } from '../../../components/adapter/master';
 
 export class Article extends Master {
 

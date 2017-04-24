@@ -1,10 +1,10 @@
 import _ from 'lodash';
 import { PasswordUtils } from '../utils/password';
-import User from '../models/user';
-import Middleware from '../../../components/adapter/middleware.service';
+import { User } from '../models/user';
+import { MiddlewareService } from '../../../components/adapter/middleware.service';
 
 let model = new User();
-let middleware = new Middleware(model);
+let middleware = new MiddlewareService(model);
 
 export class Service {
 

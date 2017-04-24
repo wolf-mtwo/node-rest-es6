@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-export default class MiddlewareService {
+export class MiddlewareService {
 
   constructor(model) {
     this.model = model;

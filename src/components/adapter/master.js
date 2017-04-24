@@ -2,7 +2,7 @@ import _ from 'lodash';
 import log4js from 'log4js';
 import mongoose from 'mongoose';
 
-export default class Master {
+export class Master {
 
   constructor(model_name) {
     if (!model_name) {
