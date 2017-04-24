@@ -56,9 +56,9 @@ properties as queriable paramenters. It mean we can do kind of queries.
 Using given data, query response should look like.
 
 ```
-GET /v1/post?user_id=u1 _-> [{ // 1 }, { // 2 }]_
-GET /v1/post?user_id=u1&article_id=a2 _-> [{ // 2 }]_
-GET /v1/post/page/:page/limit/:limit?article_id=a2 _-> [{ // 2 }]_
+GET /v1/post?user_id=u1    // [{ // 1 }, { // 2 }]
+GET /v1/post?user_id=u1&article_id=a2    // [{ // 2 }]
+GET /v1/post/page/:page/limit/:limit?article_id=a2    // [{ // 2 }]
 ```
 
 ## Running your application with Gulp

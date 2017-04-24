@@ -7,7 +7,7 @@ let logger = log4js.getLogger('database');
 
 mongoose.Promise = global.Promise;
 
-export default class MongoDB {
+export class MongoDB {
 
   static start() {
     return new Promise((response, reject) => {

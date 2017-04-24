@@ -1,4 +1,4 @@
-export default class Utils {
+export class Utils {
 
   static normalizePort(val) {
     var port = parseInt(val, 10);

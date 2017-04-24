@@ -2,14 +2,14 @@ import app from './app';
 import http from 'http';
 import glob from 'glob';
 import log4js from 'log4js';
-import utils from './app/utils';
 import config from '../../config';
+import { Utils } from './app/utils';
 
-export default class System {
+export class System {
 
   constructor() {
     this.logger = log4js.getLogger('system');
-    this.port = utils.normalizePort(process.env.PORT || config.port);
+    this.port = Utils.normalizePort(process.env.PORT || config.port);
   }
 
   loadModules(dirname) {
