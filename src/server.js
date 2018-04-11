@@ -1,6 +1,9 @@
 import log4js from 'log4js';
 import { System } from './components/system';
 import { MongoDB } from './components/mongo';
+import { Broker } from './components/broker';
+import { Mqtt } from './components/mqtt';
+
 
 let logger = log4js.getLogger('app');
 let system = new System();

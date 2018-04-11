@@ -37,6 +37,7 @@
     "gulp-sequence": "^0.4.6"
   },
   "dependencies": {
+    "amqplib": "^0.5.2",
     "body-parser": "^1.15.2",
     "crypto": "0.0.3",
     "express": "^4.14.0",
@@ -45,6 +46,8 @@
     "lodash": "^4.17.4",
     "log4js": "^0.6.38",
     "mongoose": "^4.6.6",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "mosca": "^2.8.1",
+    "mqtt": "^2.17.0"
   }
 }
