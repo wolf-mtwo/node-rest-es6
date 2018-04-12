@@ -1,2 +1,3 @@
 import { Mqtt } from './mqtt';
-export { Mqtt };
+import { Broker } from './broker';
+export { Mqtt, Broker };

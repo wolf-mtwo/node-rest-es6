@@ -1,33 +1,47 @@
 import mqtt from 'mqtt';
+import log4js from 'log4js';
+import config from './config';
 
 export class Mqtt {
 
   constructor() {
     this.client = null;
+    this.logger = log4js.getLogger('Mqtt');
+    this.client = mqtt.connect(config.mqtt.host, {
+      // clientId: '1000',
+      clean: false
+      // keepalive: 60,
+      // reconnectPeriod: 1000
+    });
   }
 
   start() {
-    var client  = mqtt.connect('mqtt://localhost');
-    this.client = mqtt.connect(`mqtt://${server.ip}:1884`, {
-      clientId: '1000',
-      clean: false,
-      keepalive: 60,
-      reconnectPeriod: 1000
+    this.client.on('reconnect', (e) => {
+      this.logger.debug('reconnecting...');
     });
-
-    client.on('connect', () => {
-      client.subscribe('presence');
-      client.publish('presence', 'Hello mqtt');
+    return new Promise((resolve) => {
+      this.client.on('connect', () => {
+        resolve();
+      });
     });
+  }
 
-    client.on('message', (topic, message) => {
-      // message is Buffer
-      console.log(message.toString());
-      client.end();
+  subscribe(topic, options) {
+    this.client.subscribe(topic, options);
+  }
+
+  emit(topic, message, options) {
+    this.client.publish(topic, JSON.stringify(message), options);
+  }
+
+  on() {
+    this.client.on('message', (topic, message) => {
+      console.log(topic, message.toString());
     });
   }
 
   stop() {
-
+    // this.client.subscribe('presence');
+    this.client.end();
   }
 }

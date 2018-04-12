@@ -1,0 +1,12 @@
+{
+  "broker": {
+    "port": 2000
+  },
+  "mongo": {
+    "host": "mongodb://localhost:27017/mqtt",
+    "collection": "ascoltatori"
+  },
+  "mqtt": {
+    "host": "mqtt://localhost:2000"
+  }
+}
